@@ -1,20 +1,61 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
 
-This contains everything you need to run your app locally.
+# Medi-Speak: Compassionate Medical Translation
 
-View your app in AI Studio: https://ai.studio/apps/f7737d91-d810-4380-872c-bcdbdbd3690e
+Medi-Speak is an AI-powered platform designed to bridge the gap between complex clinical documentation and patient understanding. Using Google's Gemini models, it translates dense medical jargon into clear, 6th-grade level English while maintaining strict privacy standards through automated anonymization.
+
+## ✨ Key Features
+
+- **Multimodal Analysis:** Process text-based reports or upload medical images and PDFs for instant interpretation.
+- **Privacy-First Scrubbing:** Integrated "SCRUBBED" engine that removes Personally Identifiable Information (PII) before analysis begins.
+- **Interactive Q&A:** Grounded chat interface allowing patients to ask follow-up questions about their specific results.
+- **Structured Insights:** Provides plain English summaries, key findings explanation, a custom medical dictionary, and prioritized next steps.
+- **Secure History:** Persistent storage for interpretations using Firebase Authentication and encrypted Firestore rules.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React 18, Vite, Tailwind CSS, Framer Motion, Lucide Icons.
+- **AI Intelligence:** Google Gemini API (`gemini-3-flash-preview`).
+- **Backend Services:** Firebase (Authentication & Cloud Firestore).
+- **Containerization:** Docker & Nginx.
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+**Prerequisites:** Node.js (v18 or higher)
 
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repository-url>
+    cd medi-speak
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Set Environment Variables:**
+    Create a `.env.local` file in the root directory and add your Gemini API Key:
+    ```env
+    GEMINI_API=your_actual_api_key_here
+    ```
+4.  **Launch the development server:**
+    ```bash
+    npm run dev
+    ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🐳 Cloud Deployment
+
+### Deploying to Vercel (Recommended)
+
+1.  **Push your code** to a GitHub, GitLab, or Bitbucket repository.
+2.  **Import to Vercel:** Log in to [Vercel](https://vercel.com) and click "Add New" > "Project".
+3.  **Environment Variables:** During the "Configure Project" step, expand the "Environment Variables" section.
+4.  **Add Key:** Add `GEMINI_API` as the name and your actual Gemini API Key as the value.
+5.  **Deploy:** Click "Deploy". Vercel will automatically detect Vite and set up the build commands.
+
+### Alternative: Vercel CLI
+If you prefer the command line:
+```bash
+npm i -g vercel
+vercel env add GEMINI_API
+vercel --prod
+```
